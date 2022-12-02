@@ -15,4 +15,9 @@ RSpec.describe Trend, type: :model do
     trend = Trend.new(user_id: 'userid', query: nil)
     expect(trend).to_not be_valid
   end
+
+  it 'should have a query_count that defaults to 0' do
+    trend = Trend.new(user_id: 'userid', query: 'query')
+    expect(trend.query_count).to eq(0)
+  end
 end
