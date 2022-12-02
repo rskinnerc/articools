@@ -19,4 +19,13 @@ RSpec.describe Article, type: :model do
   it 'should have a search method' do
     expect(Article).to respond_to(:search)
   end
+
+  it 'should return articles that match the search term' do
+    findable = Article.create(title: 'Title', body: 'Text')
+    not_findable = Article.create(title: 'Something', body: 'Something text')
+
+    expect(Article.search('Title')).to include(findable)
+    expect(Article.search('Title')).to_not include(not_findable)
+    expect(Article.search('not expected')).to_not include(findable)
+  end
 end
