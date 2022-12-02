@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Article, type: :model do
   it 'is valid with valid attributes' do
     article = Article.new(title: 'Title', body: 'Text')
-    expect(Article.new).to be_valid
+    expect(article).to be_valid
   end
 
   it 'is not valid without a title' do
