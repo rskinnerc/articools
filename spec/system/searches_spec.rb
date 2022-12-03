@@ -22,14 +22,27 @@ RSpec.describe 'Searches', type: :system do
       expect(page).to have_selector('form')
     end
 
-    it 'renders the search results' do
+    it 'renders the search results when the user types' do
       2.times { Article.create(title: 'Title', body: 'Text') }
       2.times { Article.create(title: 'Test', body: 'Text') }
 
       visit root_path
-      sleep 1
+      sleep 0.3
       fill_in 'query', with: 'Title'
       expect(page).to have_selector('.result', count: 2)
+    end
+
+    it 'renders the search results when the user types two different strings' do
+      2.times { Article.create(title: 'Title', body: 'Text') }
+      3.times { Article.create(title: 'Test', body: 'Text') }
+
+      visit root_path
+      sleep 0.3
+      fill_in 'query', with: 'Title'
+      expect(page).to have_selector('.result', count: 2)
+      sleep 0.3
+      fill_in 'query', with: 'Test'
+      expect(page).to have_selector('.result', count: 3)
     end
   end
 end
