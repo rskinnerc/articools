@@ -8,9 +8,6 @@ export default class extends Controller {
 
   newInput = new Subject()
 
-  initialize() {
-    this.generateSearchSessionId()
-  }
   connect() {
     this.setupInputEvent()
   }
