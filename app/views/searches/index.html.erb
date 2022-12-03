@@ -3,6 +3,7 @@
 
   <%= form_with url: search_path, method: :get, data: { turbo_frame: 'search-results', controller: 'search'} do %>
     <%= text_field_tag :query, '', data: {'search-target': 'query', action: 'input->search#debounceInput'}, placeholder: 'Some placeholder' %>
+    <%= hidden_field_tag :search_session_id, '', data: {'search-target': 'searchSessionId'} %>
   <% end %>
 <ul>
   <% @latest_articles.each do |article| %>
