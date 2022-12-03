@@ -21,7 +21,7 @@ export default class extends Controller {
 
   setupInputEvent() {
     this.newInput.pipe(
-      debounceTime(300),
+      debounceTime(500),
     ).subscribe(() => {
       this.element.requestSubmit()
     })
