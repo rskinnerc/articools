@@ -12,16 +12,22 @@ export default class extends Controller {
     this.setupInputEvent()
   }
 
-  debounceInput() {
-    this.queryTarget.value.length > 0 ? this.newInput.next(this.queryTarget.value) : this.generateSearchSessionId()
+  debounceInput(e) {
+    e.keycode !== 13 && this.newInput.next()
   }
 
   setupInputEvent() {
     this.newInput.pipe(
       debounceTime(500),
     ).subscribe(() => {
-      this.element.requestSubmit()
+      this.queryTarget.value.length > 0 && this.element.requestSubmit()
     })
+  }
+
+  submitQuery(e) {
+    e.preventDefault()
+    this.generateSearchSessionId()
+    this.queryTarget.value.length > 0 && this.element.requestSubmit()
   }
 
   generateSearchSessionId() {
