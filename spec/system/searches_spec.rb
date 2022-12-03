@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Searches', type: :system do
   before do
-    driven_by(:selenium)
+    driven_by(:selenium_chrome_headless)
   end
 
   describe 'GET /' do
@@ -27,7 +27,8 @@ RSpec.describe 'Searches', type: :system do
       2.times { Article.create(title: 'Test', body: 'Text') }
 
       visit root_path
-      fill_in 'query', with: 'Title', wait: 5
+      sleep 1
+      fill_in 'query', with: 'Title'
       expect(page).to have_selector('.result', count: 2)
     end
   end
