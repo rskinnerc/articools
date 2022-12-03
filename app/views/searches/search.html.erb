@@ -1,0 +1,11 @@
+<%= turbo_frame_tag "search-results" do %>
+  <% if @results.size > 0%>
+  <ul>
+    <% @results.each do |article| %>
+      <li class="result"><%= article.title %></li>
+    <% end %>
+  </ul>
+  <% else %>
+    <p>No results found</p>
+  <% end %>
+<% end %>
