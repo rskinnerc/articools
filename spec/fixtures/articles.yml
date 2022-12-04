@@ -1,0 +1,19 @@
+one:
+  title: 'First Artice'
+  body: 'First Article Body'
+
+two:
+  title: 'Second Article'
+  body: 'Second Article Body'
+
+three:
+  title: 'Third Article'
+  body: 'Third Article Body'
+
+four:
+  title: 'Fourth Article'
+  body: 'Fourth Article Body'
+
+five:
+  title: 'Fifth Article'
+  body: 'Fifth Article Body'

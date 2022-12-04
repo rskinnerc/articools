@@ -1,33 +1,11 @@
 <a name="readme-top"></a>
 
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-After you're finished please remove all the comments and instructions!
--->
-
 <div align="center">
 
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
+  <img src="./public/RSLogo.png" alt="logo" width="140"  height="auto" />
   <br/>
 
-  <h3><b>Microverse README Template</b></h3>
+  <h3><b>Articools for Helpjuice</b></h3>
 
 </div>
 
@@ -57,36 +35,36 @@ After you're finished please remove all the comments and instructions!
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 Articools <a name="about-project"></a>
 
-> Describe your project in 1 or 2 sentences.
 
-**[your_project__name]** is a...
+**Articools** is a web app built with Ruby on Rails that allows the user to search for existing articles along tracking and saving analytics (trends) about their searches. Everything in real-time.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-> Describe the tech stack and include only the relevant sections that apply to your project.
-
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li>Hotwire Turbo</a></li>
+    <li>Hotwire Turbo</a></li>
+    <li>Tailwind</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li>Ruby on Rails</li>
+    <li>Redis</li>
   </ul>
 </details>
 
 <details>
 <summary>Database</summary>
   <ul>
-    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+    <li>PostgreSQL</li>
   </ul>
 </details>
 
@@ -94,11 +72,10 @@ After you're finished please remove all the comments and instructions!
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
 
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **Real-time searching while the user types.**
+- **Query tracking. Once theuser submits a full search or loses the focu of the input, that query term is recorded as a user's trend**
+- **Full real-time. Along with the searching, the updates made to the trends are changed right away using websockets (turbo-streams)**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -106,9 +83,8 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [Live Demo Link](https://articools.fly.dev/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -116,7 +92,6 @@ After you're finished please remove all the comments and instructions!
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
 
 To get a local copy up and running, follow these steps.
 
@@ -124,75 +99,53 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
+- Having Ruby installed
+- Having Rails installed
+- Having PostgreSQL installed
+- Having Redis installed
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
-Example commands:
 
 ```sh
-  cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  git clone git@github.com:rskinnerc/articools.git
 ```
---->
 
 ### Install
 
 Install this project with:
 
-<!--
-Example command:
 
 ```sh
-  cd my-project
-  gem install
+  cd articools
+  bundle install
 ```
---->
 
 ### Usage
 
 To run the project, execute the following command:
 
-<!--
-Example command:
 
 ```sh
+  rails db:fixtures:load FIXTURES_PATH=spec/fixtures
   rails server
 ```
---->
 
 ### Run tests
 
 To run tests, run the following command:
 
-<!--
-Example command:
-
 ```sh
-  bin/rails test test/models/article_test.rb
+  rspec
 ```
---->
 
 ### Deployment
 
 You can deploy this project using:
 
-<!--
-Example:
-
-```sh
-
-```
- -->
+- Your favorite hosting/cloud provider
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -200,19 +153,12 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
 
-👤 **Author1**
+👤 **Ronald Skinner**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@rskinnerc](https://github.com/rskinnerc)
+- Twitter: [@XSkinner](https://twitter.com/XSkinner)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/rskinnerc)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -220,11 +166,9 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **Adding Devise athentication**
+- [ ] **Adding an Admin Panel to allow admins create articles**
+- [ ] **Improve user events tracking**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -242,9 +186,8 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
 
-If you like this project...
+If you like this project.. **DON'T HESITATE TO HIRE ME**. I'm available for hire.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -252,9 +195,8 @@ If you like this project...
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
 
-I would like to thank...
+I would like to thank Microverse and all the people who made this possible.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -262,15 +204,21 @@ I would like to thank...
 
 ## ❓ FAQ <a name="faq"></a>
 
-> Add at least 2 questions new developers would ask when they decide to use your project.
+- **How did you handle avoiding requesting a search for every character the user entered?**
 
-- **[Question_1]**
+  - I implemented a debouncer. This way, the search is only triggered after a certain amount of time. This way, the user can type as fast as they want without triggering a search for every character.
 
-  - [Answer_1]
+- **How did you handle recording only full searches?**
 
-- **[Question_2]**
+  - I added a `search_session_id` to every request. This way, I can track the searches that belong to the same session. Once the user submits a full search or loses the focus of the input that id changes and in the server-side I know it is not the same search; then, that query term is recorded as a user's trend.
 
-  - [Answer_2]
+- **How did you manage to make everything real-time?**
+
+  - I made heavy use of websockets. I used turbo-streams to update the trends in real-time. I also used turbo-streams to update the search results in real-time. In general, I used Turbo to make everything real-time and fast.
+
+- **How did you ensure evrything was working?**
+
+  - I developed almost the full app using TDD. I wrote test before adding or changing features.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -278,8 +226,7 @@ I would like to thank...
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT) licensed.
 
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
