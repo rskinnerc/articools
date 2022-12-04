@@ -2,16 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer components {
   .search-box {
-    @apply rounded-t-lg shadow-md border border-cyan-700/5 w-11/12 block mx-auto lg:w-1/2; 
+    @apply rounded-t-lg shadow-md border border-cyan-700/5 w-11/12 block mx-auto lg:w-1/2;
   }
 
   .search-box:focus {
     @apply ring ring-cyan-700/20;
   }
 }
-
-
