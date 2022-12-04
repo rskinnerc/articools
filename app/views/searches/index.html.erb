@@ -1,23 +1,45 @@
-<h1>Articools</h1>
+<header class="bg-cyan-100">
+  <h1 class="text-4xl text-center text-cyan-800 font-bold pt-16">Articools</h1>
+  <h2 class="text-center text-lg text-cyan-700 italic font-semibold">The coolest articles database!</h2>
 
-<%= turbo_frame_tag 'search_form' do %>
-  <%= form_with url: search_path, method: :get, data: { turbo_frame: 'search-results', controller: 'search'} do %>
-    <%= text_field_tag :query, '', data: {'search-target': 'query', action: 'blur->search#submitQuery keydown.enter->search#submitQuery input->search#debounceInput'}, placeholder: 'Some placeholder' %>
-    <%= hidden_field_tag :search_session_id, session[:search_id], data: {'search-target': 'searchSessionId'} %>
-  <% end %>
-<% end %>
-<ul>
-  <% @latest_articles.each do |article| %>
-    <li class="article"><%= article.title %></li>
-  <% end %>
-</ul>
+  <div class="relative">
+    <%= turbo_frame_tag 'search_form' do %>
+      <%= form_with url: search_path, method: :get, class: 'pt-12 block', data: { turbo_frame: 'search-results', controller: 'search'} do %>
+        <p class="text-center text-gray-500/70 font-semibold text-sm pb-4">Start typing to get real-time results. Press enter to complete your search.</p>
+        <%= text_field_tag :query, '', class: 'search-box', data: {'search-target': 'query', action: 'blur->search#submitQuery keydown.enter->search#submitQuery input->search#debounceInput'}, placeholder: 'Start typing your search' %>
+        <%= hidden_field_tag :search_session_id, session[:search_id], data: {'search-target': 'searchSessionId'} %>
+      <% end %>
+    <% end %>
+    <%= turbo_frame_tag "search-results"%>
+  </div>
 
-<%= turbo_frame_tag "search-results" %>
+</header>
 
-<%= turbo_stream_from @current_user %>
+<section class="flex flex-col-reverse lg:flex-row lg:mx-auto lg:w-10/12 gap-4 mt-20">
+  <div class="w-full">
+    <h2 class="text-lg text-fuchsia-700 font-semibold p-4">Latest Articles</h2>
+      <ul>
+        <% @latest_articles.each do |article| %>
+          <li class="border border-cyan-700/5 rounded-lg shadow-md p-4 article m-2 h-24 flex items-center">
+            <%= link_to article.title, article_path(article), class: 'text-cyan-700' %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
 
-<ul id="trends">
-  <% @trends.each do |trend| %>
-    <%= render partial: 'trends/trend', locals: { trend: trend } %>
-  <% end %>
-</ul>
+  <div class="border border-cyan-700/5 rounded-lg shadow-md p-4 m-2 lg:w-full" >
+    <h2 class="text-lg text-fuchsia-700 font-semibold ">My Popular Searches</h2>
+
+    <%= turbo_stream_from @current_user %>
+
+    <ul id="trends">
+    <% if @trends.length > 0 %>
+      <% @trends.each do |trend| %>
+        <%= render partial: 'trends/trend', locals: { trend: trend } %>
+      <% end %>
+    <% else %>
+      <li class="text-cyan-700" id="trends-placeholder">No trends yet</li>
+    <% end %>
+  </ul>
+  </div>
+</section>

@@ -1,3 +1,6 @@
-<li id="<%= dom_id(trend) %>">
-  <%= trend.query %> (<%= trend.query_count %>)</li>
+<li id="<%= dom_id(trend) %>" class="my-2">
+  <h3 class="text-cyan-700 font-semibold"><%= trend.query %></h3>
+  <span class="text-cyan-700/70 text-sm italic">You searched <%= trend.query_count %> times</span>
 </li>
+
+<%= turbo_stream.remove "trends-placeholder" %>

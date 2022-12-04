@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { Subject } from "rxjs"
-import { debounceTime } from "rxjs"
+import { Subject, debounceTime } from "rxjs"
 import { v4 as uuid } from "uuid"
 
 export default class extends Controller {

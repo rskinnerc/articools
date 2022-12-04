@@ -5,12 +5,16 @@ class SearchesController < ApplicationController
 
   def index
     @latest_articles = Article.last(3)
-    @trends = Trend.where(user_id: @current_user).order(query_count: :desc).limit(10)
+    @trends = Trend.where(user_id: @current_user).order(query_count: :desc).limit(5)
   end
 
   def search
     @results = params[:query].empty? ? [] : Article.search(params[:query])
     render :search
+  end
+
+  def show
+    @article = Article.find(params[:id])
   end
 
   private
