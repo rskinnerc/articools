@@ -1,10 +1,12 @@
 <%= turbo_frame_tag "search-results" do %>
-  <div class="bg-gray-100 w-11/12 mx-auto px-2 pt-6 rounded-b-lg shadow-md absolute left-1/2 -translate-x-1/2">
+  <div class="bg-gray-100 w-11/12 mx-auto px-2 pt-6 rounded-b-lg shadow-md absolute z-10 left-1/2 -translate-x-1/2 lg:w-1/2">
     <h2 class="text-slate-600 text-sm font-semibold">SEARCH RESULTS</h2>
     <% if @results.size > 0%>
       <ul class="-mx-2 mt-2">
         <% @results.each do |article| %>
-          <li class="result bg-cyan-50 p-2 last:rounded-b-lg h-16 flex items-center"><%= link_to article.title, article_path(article), class: 'text-cyan-700' %></li>
+         <%= link_to article_path(article), class: 'text-cyan-700', data: {turbo: false} do %>
+          <li class="result bg-cyan-50 p-2 last:rounded-b-lg h-16 flex items-center"><%= article.title %></li>
+         <% end %>
         <% end %>
       </ul>
     <% else %>
