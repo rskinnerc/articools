@@ -38,5 +38,38 @@ RSpec.describe 'Searches', type: :system do
       fill_in 'query', with: 'Second'
       expect(page).to have_selector('.result', count: 1)
     end
+
+    it 'updates the trends list when a user submits a search by blurring from the query input' do
+      visit root_path
+      sleep 0.3
+      fill_in 'query', with: 'Something Else'
+      find('h1').click
+      fill_in 'query', with: ''
+      expect(page).to have_content('Something Else', count: 1)
+    end
+
+    it 'updates a trend\'s count when a user submits te same query twice' do
+      visit root_path
+      sleep 0.3
+      fill_in 'query', with: 'Something Else'
+      find('h1').click
+      fill_in 'query', with: ''
+      expect(page).to have_content('(1)', count: 1)
+      fill_in 'query', with: 'Something Else'
+      find('h1').click
+      fill_in 'query', with: ''
+      expect(page).to have_content('(2)', count: 1)
+    end
+
+    it 'keeps the user\'s trends list when the user refreshes the page' do
+      visit root_path
+      sleep 0.3
+      fill_in 'query', with: 'Something Else'
+      find('h1').click
+      fill_in 'query', with: ''
+      expect(page).to have_content('Something Else', count: 1)
+      visit root_path
+      expect(page).to have_content('Something Else', count: 1)
+    end
   end
 end
