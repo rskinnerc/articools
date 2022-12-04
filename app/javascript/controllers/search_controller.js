@@ -1,9 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 import { Subject } from "rxjs"
 import { debounceTime } from "rxjs"
+import { v4 as uuid } from "uuid"
 
 export default class extends Controller {
-  static targets  = ["query"]
+  static targets  = ["query", "searchSessionId"]
 
   newInput = new Subject()
 
@@ -11,15 +12,25 @@ export default class extends Controller {
     this.setupInputEvent()
   }
 
-  debounceInput() {
-    this.newInput.next(this.queryTarget.value)
+  debounceInput(e) {
+    e.keycode !== 13 && this.newInput.next()
   }
 
   setupInputEvent() {
     this.newInput.pipe(
-      debounceTime(300),
+      debounceTime(500),
     ).subscribe(() => {
-      this.element.requestSubmit()
+      this.queryTarget.value.length > 0 && this.element.requestSubmit()
     })
+  }
+
+  submitQuery(e) {
+    e.preventDefault()
+    this.generateSearchSessionId()
+    this.queryTarget.value.length > 0 && this.element.requestSubmit()
+  }
+
+  generateSearchSessionId() {
+    this.searchSessionIdTarget.value = uuid()
   }
 }
