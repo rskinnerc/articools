@@ -14,7 +14,7 @@ RSpec.describe 'Searches', type: :system do
 
     it 'renders the latest 3 articles' do
       visit root_path
-      expect(page).to have_selector('.article', count: 2)
+      expect(page).to have_selector('.article', count: 3)
     end
 
     it 'renders the search form' do
@@ -54,11 +54,11 @@ RSpec.describe 'Searches', type: :system do
       fill_in 'query', with: 'Something Else'
       find('h1').click
       fill_in 'query', with: ''
-      expect(page).to have_content('(1)', count: 1)
+      expect(page).to have_content('You searched 1 times', count: 1)
       fill_in 'query', with: 'Something Else'
       find('h1').click
       fill_in 'query', with: ''
-      expect(page).to have_content('(2)', count: 1)
+      expect(page).to have_content('You searched 2 times', count: 1)
     end
 
     it 'keeps the user\'s trends list when the user refreshes the page' do
