@@ -1,15 +1,23 @@
 <h1>Articools</h1>
 
+<%= turbo_frame_tag 'search_form' do %>
   <%= form_with url: search_path, method: :get, data: { turbo_frame: 'search-results', controller: 'search'} do %>
     <%= text_field_tag :query, '', data: {'search-target': 'query', action: 'blur->search#submitQuery keydown.enter->search#submitQuery input->search#debounceInput'}, placeholder: 'Some placeholder' %>
-    <%= hidden_field_tag :search_session_id, @search_id, data: {'search-target': 'searchSessionId'} %>
+    <%= hidden_field_tag :search_session_id, session[:search_id], data: {'search-target': 'searchSessionId'} %>
   <% end %>
+<% end %>
 <ul>
   <% @latest_articles.each do |article| %>
     <li class="article"><%= article.title %></li>
   <% end %>
 </ul>
 
-<%= turbo_frame_tag "search-results" do %>
-  
-<% end %>
+<%= turbo_frame_tag "search-results" %>
+
+<%= turbo_stream_from @current_user %>
+
+<ul id="trends">
+  <% @trends.each do |trend| %>
+    <%= render partial: 'trends/trend', locals: { trend: trend } %>
+  <% end %>
+</ul>

@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
 
   def index
     @latest_articles = Article.last(3)
-    @search_id = session[:search_id]
+    @trends = Trend.where(user_id: @current_user).order(query_count: :desc).limit(10)
   end
 
   def search
